@@ -13,7 +13,7 @@ wotd = requests.request("GET", url, headers=headers).json()
 
 def slack_alert(wotd):
     webhook_url = os.environ.get("WOTD_HOOK")
-    slack_data = {'text': "Today's word:\n{}\nDefinition:\n{}".format(wotd[0]["word"], wotd[0]["mean"])} 
+    slack_data = {'text': "Today's word:\n{}\nDefinition:\n{}\n*try and use it in a sentence*".format(wotd[0]["word"], wotd[0]["mean"])} 
     requests.post(webhook_url, data=json.dumps(slack_data), headers={'Content-Type': 'application/json'})
 
 if __name__ == "__main__":
